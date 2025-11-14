@@ -387,7 +387,7 @@ const Index = () => {
                     View All <ChevronRight className="ml-1 h-3 w-3" />
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-4 gap-3">
                   {topCategories.map((category) => (
                     <CategoryCard key={category.title} {...category} />
                   ))}
