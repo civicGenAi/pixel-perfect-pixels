@@ -268,74 +268,92 @@ const Index = () => {
                 </ul>
               </div>
 
-              {/* Main Hero Slider */}
-              <div className="lg:col-span-9 relative">
-                <div className="relative h-[400px] bg-gradient-to-r from-red-500 to-orange-500 rounded-xl overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white text-center p-12">
-                      <div className="bg-yellow-400 text-black inline-block px-6 py-2 rounded-full font-bold text-2xl mb-4">
-                        SALE 50% OFF
+              {/* Main Content Area - Slider + Right Cards */}
+              <div className="lg:col-span-9">
+                <div className="grid grid-cols-12 gap-4 mb-4">
+                  {/* Main Hero Slider */}
+                  <div className="col-span-12 md:col-span-8 relative">
+                    <div className="relative h-[400px] bg-gradient-to-r from-red-500 to-orange-500 rounded-xl overflow-hidden">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-white text-center p-12">
+                          <div className="bg-yellow-400 text-black inline-block px-6 py-2 rounded-full font-bold text-2xl mb-4">
+                            SALE 50% OFF
+                          </div>
+                          <h2 className="text-5xl font-bold mb-4">{heroSlides[currentSlide].title}</h2>
+                          <p className="text-xl mb-6">{heroSlides[currentSlide].subtitle}</p>
+                          {heroSlides[currentSlide].description && (
+                            <p className="mb-6">{heroSlides[currentSlide].description}</p>
+                          )}
+                          <Button size="lg" className="bg-white text-black hover:bg-white/90 font-bold px-8">
+                            {heroSlides[currentSlide].cta}
+                          </Button>
+                        </div>
                       </div>
-                      <h2 className="text-5xl font-bold mb-4">{heroSlides[currentSlide].title}</h2>
-                      <p className="text-xl mb-6">{heroSlides[currentSlide].subtitle}</p>
-                      {heroSlides[currentSlide].description && (
-                        <p className="mb-6">{heroSlides[currentSlide].description}</p>
-                      )}
-                      <Button size="lg" className="bg-white text-black hover:bg-white/90 font-bold px-8">
-                        {heroSlides[currentSlide].cta}
-                      </Button>
+
+                      {/* Slider Navigation */}
+                      <button
+                        onClick={() => setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full"
+                      >
+                        <ChevronLeft className="h-6 w-6 text-white" />
+                      </button>
+                      <button
+                        onClick={() => setCurrentSlide((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1))}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full"
+                      >
+                        <ChevronRight className="h-6 w-6 text-white" />
+                      </button>
+
+                      {/* Slider Indicator */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                        {heroSlides.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentSlide(index)}
+                            className={`w-2 h-2 rounded-full transition-all ${
+                              currentSlide === index ? "bg-white w-8" : "bg-white/50"
+                            }`}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Slider Navigation */}
-                  <button
-                    onClick={() => setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full"
-                  >
-                    <ChevronLeft className="h-6 w-6 text-white" />
-                  </button>
-                  <button
-                    onClick={() => setCurrentSlide((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1))}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full"
-                  >
-                    <ChevronRight className="h-6 w-6 text-white" />
-                  </button>
-
-                  {/* Slider Indicator */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                    {heroSlides.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          currentSlide === index ? "bg-white w-8" : "bg-white/50"
-                        }`}
-                      />
+                  {/* Right Side Cards - First 2 products stacked */}
+                  <div className="col-span-12 md:col-span-4 flex flex-col gap-4">
+                    {featuredProducts.slice(0, 2).map((product, index) => (
+                      <div key={index} className="bg-white rounded-lg p-4 hover:shadow-lg transition-shadow flex-1">
+                        <img src={product.image} alt={product.title} className="w-full h-32 object-cover rounded mb-3" />
+                        <h3 className="font-bold text-sm mb-1">{product.title}</h3>
+                        {product.subtitle && <p className="text-xs text-gray-600 mb-1">{product.subtitle}</p>}
+                        {product.price && (
+                          <p className="text-primary font-bold mb-1 text-sm">from Tsh {product.price.toLocaleString()}</p>
+                        )}
+                        <Button variant="link" className="text-primary p-0 h-auto font-semibold text-xs">
+                          {product.cta}
+                        </Button>
+                      </div>
                     ))}
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Featured Products Row */}
-        <section className="py-4 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 gap-3 max-w-3xl">
-              {featuredProducts.map((product, index) => (
-                <div key={index} className="bg-white rounded-lg p-4 hover:shadow-lg transition-shadow">
-                  <img src={product.image} alt={product.title} className="w-full h-24 object-cover rounded mb-3" />
-                  <h3 className="font-bold text-xs mb-1">{product.title}</h3>
-                  {product.subtitle && <p className="text-[10px] text-gray-600 mb-1">{product.subtitle}</p>}
-                  {product.price && (
-                    <p className="text-primary font-bold mb-1 text-xs">from Tsh {product.price.toLocaleString()}</p>
-                  )}
-                  <Button variant="link" className="text-primary p-0 h-auto font-semibold text-xs">
-                    {product.cta}
-                  </Button>
+                {/* Bottom Cards - Remaining 2 products */}
+                <div className="grid grid-cols-2 gap-4">
+                  {featuredProducts.slice(2, 4).map((product, index) => (
+                    <div key={index} className="bg-white rounded-lg p-4 hover:shadow-lg transition-shadow">
+                      <img src={product.image} alt={product.title} className="w-full h-32 object-cover rounded mb-3" />
+                      <h3 className="font-bold text-sm mb-1">{product.title}</h3>
+                      {product.subtitle && <p className="text-xs text-gray-600 mb-1">{product.subtitle}</p>}
+                      {product.price && (
+                        <p className="text-primary font-bold mb-1 text-sm">from Tsh {product.price.toLocaleString()}</p>
+                      )}
+                      <Button variant="link" className="text-primary p-0 h-auto font-semibold text-xs">
+                        {product.cta}
+                      </Button>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
