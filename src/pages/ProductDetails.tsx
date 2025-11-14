@@ -9,9 +9,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ShoppingCart, Heart, Star, ChevronRight, Minus, Plus } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
@@ -254,7 +256,21 @@ const ProductDetails = () => {
                       <Plus className="h-4 w-4" />
                     </Button>
                   </div>
-                  <Button size="lg" className="flex-1 min-w-[200px]">
+                  <Button 
+                    size="lg" 
+                    className="flex-1 min-w-[200px]"
+                    onClick={() => {
+                      for (let i = 0; i < quantity; i++) {
+                        addToCart({ 
+                          id: Number(product.id), 
+                          title: product.title, 
+                          price: product.price, 
+                          image: product.images[0] 
+                        });
+                      }
+                      setQuantity(1);
+                    }}
+                  >
                     <ShoppingCart className="mr-2 h-5 w-5" />
                     Add to Cart
                   </Button>

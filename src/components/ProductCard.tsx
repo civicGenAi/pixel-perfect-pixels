@@ -2,6 +2,7 @@ import { ShoppingCart, Heart, Eye, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Link } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
 
 interface ProductCardProps {
   id?: number;
@@ -26,6 +27,7 @@ export const ProductCard = ({
   badge,
   badgeVariant = "sale",
 }: ProductCardProps) => {
+  const { addToCart } = useCart();
   const getBadgeColor = () => {
     switch (badgeVariant) {
       case "sale":
@@ -68,6 +70,7 @@ export const ProductCard = ({
         {/* Add to Cart Button */}
         <Button
           className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-primary hover:bg-primary/90"
+          onClick={() => addToCart({ id: id || 1, title, price, image })}
         >
           <ShoppingCart className="h-4 w-4 mr-2" />
           Add to Cart
