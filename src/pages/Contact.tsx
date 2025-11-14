@@ -51,10 +51,10 @@ const Contact = () => {
         </div>
 
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary via-blue-600 to-purple-600 text-white py-20">
+        <section className="bg-primary text-white py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-lg rounded-2xl mb-6">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-lg mb-6">
                 <MessageSquare className="w-10 h-10" />
               </div>
               <h1 className="text-5xl font-bold mb-6">Get In Touch</h1>
@@ -194,21 +194,21 @@ const Contact = () => {
                 </div>
 
                 {/* FAQ Quick Links */}
-                <div className="bg-gradient-to-br from-primary via-blue-600 to-purple-600 text-white rounded-2xl p-8">
+                <div className="bg-primary text-white rounded-2xl p-8">
                   <h3 className="text-2xl font-bold mb-4">Quick Help</h3>
                   <p className="text-white/90 mb-6">
                     Looking for quick answers? Check out our frequently asked questions
                   </p>
                   <div className="space-y-3">
-                    <Link to="#" className="block p-4 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all">
+                    <Link to="#" className="block p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all">
                       <div className="font-semibold">Shipping & Delivery</div>
                       <div className="text-sm text-white/80">Learn about our shipping policies</div>
                     </Link>
-                    <Link to="#" className="block p-4 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all">
+                    <Link to="#" className="block p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all">
                       <div className="font-semibold">Returns & Refunds</div>
                       <div className="text-sm text-white/80">30-day return policy details</div>
                     </Link>
-                    <Link to="#" className="block p-4 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all">
+                    <Link to="#" className="block p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all">
                       <div className="font-semibold">Payment Methods</div>
                       <div className="text-sm text-white/80">Accepted payment options</div>
                     </Link>
