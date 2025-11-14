@@ -320,18 +320,18 @@ const Index = () => {
         </section>
 
         {/* Featured Products Row */}
-        <section className="py-6 bg-gray-50">
+        <section className="py-4 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 max-w-3xl">
               {featuredProducts.map((product, index) => (
-                <div key={index} className="bg-white rounded-lg p-6 hover:shadow-lg transition-shadow">
-                  <img src={product.image} alt={product.title} className="w-full h-32 object-cover rounded mb-4" />
-                  <h3 className="font-bold text-sm mb-2">{product.title}</h3>
-                  {product.subtitle && <p className="text-xs text-gray-600 mb-2">{product.subtitle}</p>}
+                <div key={index} className="bg-white rounded-lg p-4 hover:shadow-lg transition-shadow">
+                  <img src={product.image} alt={product.title} className="w-full h-24 object-cover rounded mb-3" />
+                  <h3 className="font-bold text-xs mb-1">{product.title}</h3>
+                  {product.subtitle && <p className="text-[10px] text-gray-600 mb-1">{product.subtitle}</p>}
                   {product.price && (
-                    <p className="text-primary font-bold mb-2">from Tsh {product.price.toLocaleString()}</p>
+                    <p className="text-primary font-bold mb-1 text-xs">from Tsh {product.price.toLocaleString()}</p>
                   )}
-                  <Button variant="link" className="text-primary p-0 h-auto font-semibold text-sm">
+                  <Button variant="link" className="text-primary p-0 h-auto font-semibold text-xs">
                     {product.cta}
                   </Button>
                 </div>
@@ -341,21 +341,21 @@ const Index = () => {
         </section>
 
         {/* Featured Brands & Top Categories */}
-        <section className="py-8 bg-white">
+        <section className="py-6 bg-white">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Featured Brands */}
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold">featured brands</h2>
-                  <Button variant="link" className="text-primary">
-                    View All <ChevronRight className="ml-1 h-4 w-4" />
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-bold">featured brands</h2>
+                  <Button variant="link" className="text-primary text-sm">
+                    View All <ChevronRight className="ml-1 h-3 w-3" />
                   </Button>
                 </div>
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-4 gap-3">
                   {["Apple", "Samsung", "Xiaomi", "MSI", "Toshiba", "Asus", "Sony", "Canon"].map((brand) => (
-                    <div key={brand} className="bg-white border rounded-lg p-6 flex items-center justify-center hover:shadow-md transition-shadow">
-                      <span className="font-semibold text-sm text-center">{brand}</span>
+                    <div key={brand} className="bg-white border rounded-lg p-4 flex items-center justify-center hover:shadow-md transition-shadow">
+                      <span className="font-semibold text-xs text-center">{brand}</span>
                     </div>
                   ))}
                 </div>
@@ -363,13 +363,13 @@ const Index = () => {
 
               {/* Top Categories */}
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold">top categories</h2>
-                  <Button variant="link" className="text-primary">
-                    View All <ChevronRight className="ml-1 h-4 w-4" />
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-bold">top categories</h2>
+                  <Button variant="link" className="text-primary text-sm">
+                    View All <ChevronRight className="ml-1 h-3 w-3" />
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   {topCategories.map((category) => (
                     <CategoryCard key={category.title} {...category} />
                   ))}
