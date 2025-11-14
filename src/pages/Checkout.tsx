@@ -8,13 +8,13 @@ import { Label } from "@/components/ui/label";
 import { useCart } from "@/contexts/CartContext";
 
 const Checkout = () => {
-  const { items, getTotalPrice } = useCart();
+  const { items, getTotal } = useCart();
   const [paymentMethod, setPaymentMethod] = useState("bank");
   const [showLoginNotice, setShowLoginNotice] = useState(true);
   const [showCouponNotice, setShowCouponNotice] = useState(true);
 
   const shippingFee = 25000; // TZS 25,000 for worldwide standard shipping
-  const subtotal = getTotalPrice();
+  const subtotal = getTotal();
   const total = subtotal + shippingFee;
 
   return (
