@@ -322,7 +322,7 @@ const Index = () => {
         {/* Featured Products Row */}
         <section className="py-6 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {featuredProducts.map((product, index) => (
                 <div key={index} className="bg-white rounded-lg p-6 hover:shadow-lg transition-shadow">
                   <img src={product.image} alt={product.title} className="w-full h-32 object-cover rounded mb-4" />
@@ -340,38 +340,41 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Featured Brands */}
+        {/* Featured Brands & Top Categories */}
         <section className="py-8 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">featured brands</h2>
-              <Button variant="link" className="text-primary">
-                View All <ChevronRight className="ml-1 h-4 w-4" />
-              </Button>
-            </div>
-            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4">
-              {["Apple", "Samsung", "Xiaomi", "MSI", "Toshiba", "Asus", "Sony", "Canon"].map((brand) => (
-                <div key={brand} className="bg-white border rounded-lg p-6 flex items-center justify-center hover:shadow-md transition-shadow">
-                  <span className="font-semibold text-sm text-center">{brand}</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Featured Brands */}
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold">featured brands</h2>
+                  <Button variant="link" className="text-primary">
+                    View All <ChevronRight className="ml-1 h-4 w-4" />
+                  </Button>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
+                  {["Apple", "Samsung", "Xiaomi", "MSI", "Toshiba", "Asus", "Sony", "Canon"].map((brand) => (
+                    <div key={brand} className="bg-white border rounded-lg p-6 flex items-center justify-center hover:shadow-md transition-shadow">
+                      <span className="font-semibold text-sm text-center">{brand}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-        {/* Top Categories */}
-        <section className="py-8 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">top categories</h2>
-              <Button variant="link" className="text-primary">
-                View All <ChevronRight className="ml-1 h-4 w-4" />
-              </Button>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {topCategories.map((category) => (
-                <CategoryCard key={category.title} {...category} />
-              ))}
+              {/* Top Categories */}
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold">top categories</h2>
+                  <Button variant="link" className="text-primary">
+                    View All <ChevronRight className="ml-1 h-4 w-4" />
+                  </Button>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {topCategories.map((category) => (
+                    <CategoryCard key={category.title} {...category} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
