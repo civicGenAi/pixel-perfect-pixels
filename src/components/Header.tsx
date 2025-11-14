@@ -48,13 +48,13 @@ export const Header = () => {
               <Link to="/" className="text-sm font-semibold hover:text-primary transition-colors">
                 Home
               </Link>
-              <Link to="#" className="text-sm font-semibold hover:text-primary transition-colors">
-                Pages
+              <Link to="/about" className="text-sm font-semibold hover:text-primary transition-colors">
+                About
               </Link>
               <Link to="#" className="text-sm font-semibold hover:text-primary transition-colors">
                 Products
               </Link>
-              <Link to="#" className="text-sm font-semibold hover:text-primary transition-colors">
+              <Link to="/contact" className="text-sm font-semibold hover:text-primary transition-colors">
                 Contact
               </Link>
             </nav>
