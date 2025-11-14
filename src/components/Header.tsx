@@ -51,7 +51,7 @@ export const Header = () => {
               <Link to="/about" className="text-sm font-semibold hover:text-primary transition-colors">
                 About
               </Link>
-              <Link to="#" className="text-sm font-semibold hover:text-primary transition-colors">
+              <Link to="/products" className="text-sm font-semibold hover:text-primary transition-colors">
                 Products
               </Link>
               <Link to="/contact" className="text-sm font-semibold hover:text-primary transition-colors">
