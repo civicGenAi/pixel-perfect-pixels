@@ -1,8 +1,10 @@
 import { ShoppingCart, Heart, Eye, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
+  id?: number;
   image: string;
   title: string;
   price: number;
@@ -14,6 +16,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({
+  id,
   image,
   title,
   price,
@@ -73,9 +76,11 @@ export const ProductCard = ({
 
       {/* Product Info */}
       <div>
-        <h3 className="font-medium text-sm mb-2 line-clamp-2 hover:text-primary cursor-pointer">
-          {title}
-        </h3>
+        <Link to={`/product/${id || 1}`}>
+          <h3 className="font-medium text-sm mb-2 line-clamp-2 hover:text-primary cursor-pointer">
+            {title}
+          </h3>
+        </Link>
         
         {/* Rating */}
         <div className="flex items-center gap-1 mb-2">
