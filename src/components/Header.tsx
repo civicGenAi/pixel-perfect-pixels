@@ -2,8 +2,10 @@ import { Search, ShoppingCart, User, Heart, Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Link } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
 
 export const Header = () => {
+  const { getItemCount } = useCart();
   return (
     <header className="w-full bg-background">
       {/* Top Bar */}
@@ -54,12 +56,16 @@ export const Header = () => {
             <Button variant="ghost" size="icon" className="relative">
               <Heart className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                2
-              </span>
-            </Button>
+            <Link to="/cart">
+              <Button variant="ghost" size="icon" className="relative">
+                <ShoppingCart className="h-5 w-5" />
+                {getItemCount() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {getItemCount()}
+                  </span>
+                )}
+              </Button>
+            </Link>
             <Link to="/login">
               <Button variant="ghost" className="gap-2">
                 <User className="h-5 w-5" />
